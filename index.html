@@ -1,41 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>codex portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: #000;
+            color: #ff0000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        /* Profile Picture */
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #ff000055;
+        }
+
+        .bio {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icons a {
+            font-size: 2rem;
+            color: #ff0000;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: #ffffff;
+            transform: scale(1.2);
+        }
+
+        .social-icons a:active {
+            animation: tapEffect 0.3s ease-in-out;
+        }
+
+        @keyframes tapEffect {
+            0% { transform: scale(1.2); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* Resume & Project List Section */
+        .section {
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            color: #ff0000;
+            border: 2px solid #ff0000;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: rgba(255, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: #ff0000;
+            color: #000;
+            box-shadow: 0 0 15px #ff000055;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Project List */
+        .project {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid #ff0000;
+            margin-top: 1rem;
+            border-radius: 8px;
+            background: rgba(255, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project:hover {
+            background: rgba(255, 0, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 0 10px #ff000033;
+        }
+
+        .project-name {
+            font-size: 1.2rem;
+        }
+
+        /* Rocket Animation */
+        .rocket-container {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            animation: takeOff 2s ease-out forwards;
+        }
+
+        .rocket {
+            font-size: 3rem;
+            transform: rotate(315deg);
+            color: #ff0000;
+            text-shadow: 0 0 15px #ff0000;
+        }
+
+        .fire {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 30px;
+            background: linear-gradient(to top, #ff0000, #ff4444);
+            border-radius: 50%;
+            animation: fireBlast 0.1s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes takeOff {
+            0% { bottom: -100px; opacity: 1; }
+            100% { bottom: 100vh; opacity: 0; }
+        }
+
+        @keyframes fireBlast {
+            from { transform: scaleY(1) translateX(-50%); opacity: 0.8; }
+            to { transform: scaleY(1.5) translateX(-50%); opacity: 0.4; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .btn { font-size: 1rem; padding: 10px 20px; }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="background">
-    <div class="circle"></div>
-    <div class="circle"></div>
-  </div>
-  <div class="wrapper">
-    <div class="img-area">
-      <div class="inner-area">
-        <img src="src/Snapinst.app_370525852_1901870826851691_6879072446123981958_n_1080.jpg" alt="">
-      </div>
-    </div>
-    <div class="name">CodeX</div>
-    <div class="about">
-      I am a Hobbiest Coder
-    </div>
-    <div class="social-icons">
-      <a href="https://t.me/pheonixion"><i class="fab fa-telegram"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="atmostechnexa@gmail.com"><i class="fab fa-envelope"></i></a>
-      <a href="https://github.com/codexart-lab"><i class="fab fa fa-github"></i></a>
-    </div>
-    <div class="buttons">
-      <button>Message</button>
-      <button>Follow me</button>
-    </div>
-  </div>
-</body>
+    <div class="container">
+        <img src="https://i.ibb.co/0VR8ZpTL/Snapinst-app-370525852-1901870826851691-6879072446123981958-n-1080.jpg" alt="Profile Picture" class="profile-pic">
+        <h1>CODEX</h1>
+        <p class="bio">Full-stack developer specializing in modern web solutions.<br>Turning coffee into code since 2020.</p>
 
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://t.me/codexhelps_bot" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://github.com/codexart-lab" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://instagram.com/your-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto atmostechnexa@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+
+        <!-- Resume Section -->
+        <div class="section">
+            <h2>Resume</h2>
+            <a href="your-resume-link.pdf" download class="btn">Download Resume</a>
+        </div>
+
+        <!-- Project List Section -->
+        <div class="section">
+            <h2>Project List</h2>
+            <div class="project"><span class="project-name">Duckgpt</span><a href="https://duckgpt.digitalera.workers.dev/" class="btn">View</a></div>
+            <div class="project"><span class="project-name">Snapahost</span><a href="https://codexart-lab.github.io/Snaphost/" class="btn">View</a></div>
+            <div class="project"><span class="project-name">Drive2Downloader</span><a href="https://drive2downloader.pages.dev/" class="btn">View</a></div>
+        </div>
+        <div class="project"> <span class="project-name">Telegram webhook</span><a href="https://telegram-webhook-manager.onrender.com/" class="btn">View</a></div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const rocketContainer = document.createElement('div');
+            rocketContainer.className = 'rocket-container';
+            rocketContainer.innerHTML = '<div class="rocket">🚀</div><div class="fire"></div>';
+            document.body.appendChild(rocketContainer);
+            setTimeout(() => rocketContainer.remove(), 3000);
+        });
+    </script>
+</body>
 </html>
